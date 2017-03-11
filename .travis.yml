@@ -1,3 +1,5 @@
+sudo: false
+dist: trusty
 language: node_js
 node_js:
   - "6.9"
@@ -12,9 +14,10 @@ addons:
        - google-chrome-stable
 
 before_script:
+  - npm install -g @angular/cli
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm install -g @angular/cli
+  - sleep 3
 
 script:
   - ng test --watch false
