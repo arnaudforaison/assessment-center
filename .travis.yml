@@ -19,3 +19,4 @@ notifications:
 addons:
     code_climate:
         repo_token: ec507f052b354c2a3cb1e5d3fda0ec9b36e3b257c5a08ddd63b2f1e156487773
+    firefox: latest
