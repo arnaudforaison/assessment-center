@@ -5,8 +5,6 @@ node_js:
   - "6.9"
 
 addons:
-    code_climate:
-        repo_token: ec507f052b354c2a3cb1e5d3fda0ec9b36e3b257c5a08ddd63b2f1e156487773
     apt:
       sources:
        - google-chrome
@@ -15,6 +13,7 @@ addons:
 
 before_script:
   - npm install -g @angular/cli
+  - npm install -g firebase-tools
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
@@ -27,4 +26,5 @@ notifications:
   email:
     on_success: never # default: change
 
-
+after_success:
+  - firebase deploy --token=${FIREBASE_API_TOKEN}
