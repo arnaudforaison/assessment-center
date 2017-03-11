@@ -2,8 +2,16 @@ language: node_js
 node_js:
   - "6.9"
 
+addons:
+    code_climate:
+        repo_token: ec507f052b354c2a3cb1e5d3fda0ec9b36e3b257c5a08ddd63b2f1e156487773
+    apt:
+      sources:
+       - google-chrome
+      packages:
+       - google-chrome-stable
+
 before_script:
-  - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm install -g @angular/cli
@@ -16,7 +24,4 @@ notifications:
   email:
     on_success: never # default: change
 
-addons:
-    code_climate:
-        repo_token: ec507f052b354c2a3cb1e5d3fda0ec9b36e3b257c5a08ddd63b2f1e156487773
-    firefox: latest
+
