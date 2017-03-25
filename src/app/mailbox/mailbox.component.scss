@@ -1,0 +1,12 @@
+@import 'src/sass/main';
+
+.main {
+    height: 100%;
+
+    &__sidebar {
+        @include grid-column(2);
+        margin-left : 0;
+        height: 100%;
+        border-right: .1rem solid lightgrey;
+    }
+}

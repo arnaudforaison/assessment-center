@@ -1,0 +1,201 @@
+body {
+  color: $text-color;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+  @extend %roboto;
+}
+
+// Fonts
+$thin-font-weight: 100;
+$light-font-weight: 300;
+$regular-font-weight: 400;
+$medium-font-weight: 500;
+$bold-font-weight: 700;
+
+%thin { font-weight: $thin-font-weight; }
+%light { font-weight: $light-font-weight; }
+%regular { font-weight: $regular-font-weight; }
+%medium { font-weight: $medium-font-weight; }
+%bold { font-weight: $bold-font-weight; }
+
+%italic { font-style: italic; }
+
+$base-font-family: 'Roboto', sans-serif;
+$base-font-size: 1em;
+$base-font-weight: $regular-font-weight;
+
+%roboto {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+}
+
+%ms-up-7 { font-size: modular-scale(7, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-6 { font-size: modular-scale(6, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-5 { font-size: modular-scale(5, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-4 { font-size: modular-scale(4, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-3 { font-size: modular-scale(3, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-2 { font-size: modular-scale(2, $modular-scale-base, $modular-scale-ratio); }
+%ms-up-1 { font-size: modular-scale(1, $modular-scale-base, $modular-scale-ratio); }
+%ms-base { font-size: modular-scale(0, $modular-scale-base, $modular-scale-ratio); }
+%ms-down-1 { font-size: modular-scale(-1, $modular-scale-base, $modular-scale-ratio); }
+%ms-down-2 { font-size: modular-scale(-2, $modular-scale-base, $modular-scale-ratio); }
+%ms-down-3 { font-size: modular-scale(-3, $modular-scale-base, $modular-scale-ratio); }
+
+// Links 
+%link {
+  @include position(relative, null null null null);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .5s $ease-out-quint;
+
+  &::before {
+    @include position(absolute, null null -.3em 0);
+    background: $green-color;
+    content: '';
+    display: block;
+    height: .15em;
+    transition: all .3s $ease-out-quint;
+    visibility: hidden;
+    width: 0;
+  }
+
+  &:visited {
+    color: darken($green-color, 30%);
+  }
+
+  &:hover,
+  &:visited:hover {
+    color: lightgrey;
+
+    &::before {
+      content: '';
+      display: block;
+      transition: all .2s $ease-out-quint;
+      visibility: visible;
+      width: 100%;
+    }
+  }
+}
+
+// Typography
+///////////////////////////////////
+%margin-headings { margin: $modular-scale-ratio 0 .5; }
+
+%block-margins { margin: $em-base 0; }
+
+%unordered-list { list-style-type: disc; }
+%ordered-list { list-style: decimal; }
+
+.type {
+  a {
+    @extend %link;
+    @extend %medium;
+  }
+
+  em,
+  i {
+    @extend %italic;
+    @extend %light;
+  }
+
+  b,
+  strong {
+    @extend %bold;
+  }
+
+  h1,
+  h2 {
+    @extend %light;
+    line-height: 1.2;
+  }
+
+  h3,
+  h4 {
+    @extend %medium;
+    line-height: 1.35;
+  }
+
+  h1 {
+    @extend %ms-up-6;
+    @extend %margin-headings;
+  }
+
+  h2 {
+    @extend %ms-up-5;
+    @extend %margin-headings;
+  }
+
+  h3 {
+    @extend %ms-up-4;
+    @extend %margin-headings;
+  }
+
+  h4 {
+    @extend %ms-up-3;
+    @extend %margin-headings;
+  }
+
+  h5 {
+    @extend %ms-up-2;
+    margin: 1em 0 .5em;
+  }
+
+  h6 {
+    @extend %ms-up-1;
+    margin: 1em 0 .5em;
+  }
+
+  ol,
+  p,
+  pre,
+  span,
+  ul {
+    @extend %ms-base;
+    @extend %block-margins;
+  }
+
+  ul {
+    @extend %unordered-list;
+  }
+
+  ol {
+    @extend %ordered-list;
+  }
+
+  small {
+    @extend %light;
+    @extend %ms-down-1;
+  }
+
+  blockquote {
+    @extend %thin;
+    @extend %italic;
+    @extend %ms-up-1;
+  }
+
+  input,
+  label,
+  textarea {
+    @extend %regular;
+    @extend %ms-base;
+  }
+
+  button {
+    @extend %bold;
+    font-size: .9rem;
+    border: none;
+    cursor: pointer;
+    background-color: $green-color;
+    color: white;
+    padding: .7rem 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+
+    &:hover {
+      box-shadow: 0 11px 22px rgba(0, 0, 0, .25), 0 6px 6px rgba(0, 0, 0, .22);
+      cursor: pointer;
+      transition: all .5s $ease-out-quint;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+$text-color: #707070;
+$base-color: #f8f8f8;
+$green-color: #69cc93;
+// $green-color: #add7af;
+
+// Sidebar variables
+$sidebar-bg: #E4E4E4;
+
+
+// Grid via Bourbon Neat
+$neat-grid: (
+  columns: 12,
+  gutter: 20px,
+);
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background: $base-color;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all .2s $ease-out-quint;
+  width: 100%;
+}
+
+@import 'typography';
